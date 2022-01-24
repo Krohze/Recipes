@@ -1,13 +1,15 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { GlobalStyles } from "./GlobalStyles";
-import { Fragment } from "react";
 import Home from "./Pages/Home";
 
 function App() {
   return (
-    <Fragment>
+    <Router>
       <GlobalStyles />
-      <Home />
-    </Fragment>
+      <Routes>
+        <Route exact path={"/"} element={<Home />} />
+      </Routes>
+    </Router>
   );
 }
 
