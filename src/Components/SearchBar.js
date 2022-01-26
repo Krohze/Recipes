@@ -1,26 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 
-const SearchBar = ({ searchTerm, setSearchTerm, submitSearch }) => {
+const SearchBar = ({ searchTerm, setSearchTerm, handleSubmit }) => {
   return (
-    <StyledForm id="searchForm">
+    <StyledForm onSubmit={handleSubmit}>
       <StyledInput
-        id="searchInput"
         type="text"
-        form="searchForm"
         placeholder="Search for a recipe"
         aria-label="Search for a recipe"
         value={searchTerm}
         onChange={(event) => setSearchTerm(event.target.value)}
       />
-      <StyledButton
-        id="searchButton"
-        form="searchForm"
-        type="onClick"
-        onClick={submitSearch}
-      >
-        SEARCH
-      </StyledButton>
+      <StyledButton type="submit">SEARCH</StyledButton>
     </StyledForm>
   );
 };

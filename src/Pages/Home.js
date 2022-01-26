@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { SearchBar, RecipesList } from "../Components";
-import fetchRecipes from "../Helper/fetchRecipes";
+import useFetch from "../Hooks/useFetch";
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState(null);
+  const spoonPop =
+    "https://api.spoonacular.com/recipes/complexSearch?sort=popularity&number=3&apiKey=73d95ab19d8b46ccbc8ef8dda36c44f5";
+  const testAPI = "https://dog.ceo/api/breeds/image/random";
+  const { data, loading, error, refetch } = useFetch(testAPI);
 
-  const submitSearch = () => {
-    console.log("submit search");
+  let spoonacularAPI = `https://api.spoonacular.com/recipes/complexSearch?query=pasta&number=1&apiKey=73d95ab19d8b46ccbc8ef8dda36c44f5`;
+
+  const handleSubmit = () => {
+    refetch(testAPI);
   };
-
-  useEffect(() => {
-    console.log("hello");
-  }, []);
 
   return (
     <StyledContainer>
@@ -22,8 +23,16 @@ const Home = () => {
       </StyledHeader>
 
       <StyledMain>
-        <SearchBar props={(searchTerm, setSearchTerm, submitSearch)} />
-        <RecipesList props={searchResults} />
+        <SearchBar
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          handleSubmit={handleSubmit}
+        />
+        {loading ? (
+          <div>LOADING...</div>
+        ) : (
+          <RecipesList items={data ? data : ""} />
+        )}
       </StyledMain>
 
       <StyledFooter>
