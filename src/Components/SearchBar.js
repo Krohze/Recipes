@@ -23,6 +23,7 @@ const StyledForm = styled.form`
   flex-direction: row;
   width: 100%;
   max-width: 500px;
+  margin-bottom: 30px;
 `;
 
 const StyledInput = styled.input`
@@ -30,17 +31,19 @@ const StyledInput = styled.input`
   height: 50px;
   margin-right: 10px;
   border: none;
-  border: 1px solid #bdbdbd;
+  border: 1px solid ${(props) => props.theme.color.main};
+  font-family: "Roboto", sans-serif;
   font-size: 24px;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 3px;
+  color: ${(props) => props.theme.color.dark};
   &::placeholder {
-    color: #a8a8a8;
-    font-weight: 300;
+    color: ${(props) => props.theme.color.dark};
+    font-weight: 100;
   }
   :focus {
     outline: none;
-    border: 2px solid #aaaaaa;
+    border: 1px solid ${(props) => props.theme.color.dark};
   }
   :focus::placeholder {
     color: transparent;
@@ -51,9 +54,13 @@ const StyledButton = styled.button`
   width: 100px;
   height: 50px;
   border: none;
-  border-radius: 5px;
-  background-color: green;
+  border-radius: 3px;
+  background-color: ${(props) => props.theme.color.main};
   color: white;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   font-weight: 700;
+  &:hover {
+    background-color: ${(props) => props.theme.color.dark};
+  }
 `;

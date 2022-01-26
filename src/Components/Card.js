@@ -16,8 +16,16 @@ export default Card;
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid blue;
+  background-color: white;
+  &:hover {
+    transform: translate(-2px, -2px);
+    transition: 0.1s;
+    //border-right: 2px solid ${(props) => props.theme.color.contrast};
+    //border-bottom: 2px solid ${(props) => props.theme.color.contrast};
+    box-shadow: 5px 5px ${(props) => props.theme.color.contrast};
+  }
 `;
+
 const StyledImage = styled.img`
   width: 100%;
   height: auto;
@@ -25,8 +33,7 @@ const StyledImage = styled.img`
 `;
 
 const StyledText = styled.div`
-  text-align: center;
   font-size: 28px;
   font-weight: 700;
-  padding: 10px;
+  padding: 16px 24px 24px 24px;
 `;

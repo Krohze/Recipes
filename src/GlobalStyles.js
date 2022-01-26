@@ -7,6 +7,15 @@ export const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
     }
     body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 `;
+
+export const theme = {
+  color: {
+    main: "#158479",
+    light: "#e9fcfa",
+    dark: "#0e5850",
+    contrast: "#FFA931",
+  },
+};

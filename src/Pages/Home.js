@@ -60,17 +60,18 @@ const StyledHeader = styled.header`
   left: 0;
   height: 50px;
   margin-bottom: 16px;
-  border-bottom: 1px solid orange;
+  border-bottom: 1px solid ${(props) => props.theme.color.contrast};
+  background-color: white;
+  color: ${(props) => props.theme.color.dark};
 `;
 
 const StyledMain = styled.main`
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  margin: 0 16px;
-  padding: 10px 0;
-  border: 1px solid red;
+  padding: 24px;
+  background-image: linear-gradient(white 0%, #e9fcfa 25%);
 `;
 
 const StyledFooter = styled.footer`
@@ -79,5 +80,6 @@ const StyledFooter = styled.footer`
   justify-content: center;
   align-items: center;
   height: 50px;
-  border-top: 1px solid orange;
+  border-top: 1px solid ${(props) => props.theme.color.contrast};
+  color: ${(props) => props.theme.color.dark};
 `;
