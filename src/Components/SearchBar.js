@@ -1,24 +1,34 @@
-import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
+import useFetch from "../Hooks/useFetch";
 
-const SearchBar = ({ searchTerm, setSearchTerm, handleSubmit }) => {
+const SearchBar = ({ fetchRecipes }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSubmit = () => {
+    fetchRecipes(searchTerm);
+  };
+
   return (
-    <StyledForm onSubmit={handleSubmit}>
+    <StyledWrapper>
       <StyledInput
         type="text"
         placeholder="Search for a recipe"
         aria-label="Search for a recipe"
         value={searchTerm}
         onChange={(event) => setSearchTerm(event.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
       />
-      <StyledButton type="submit">SEARCH</StyledButton>
-    </StyledForm>
+      <StyledButton type="submit" onClick={handleSubmit}>
+        SEARCH
+      </StyledButton>
+    </StyledWrapper>
   );
 };
 
 export default SearchBar;
 
-const StyledForm = styled.form`
+const StyledWrapper = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;

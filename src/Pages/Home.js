@@ -1,20 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { SearchBar, RecipesList } from "../Components";
 import useFetch from "../Hooks/useFetch";
 
 const Home = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const spoonPop =
-    "https://api.spoonacular.com/recipes/complexSearch?sort=popularity&number=3&apiKey=73d95ab19d8b46ccbc8ef8dda36c44f5";
-  const testAPI = "https://dog.ceo/api/breeds/image/random";
-  const { data, loading, error, refetch } = useFetch(testAPI);
-
-  let spoonacularAPI = `https://api.spoonacular.com/recipes/complexSearch?query=pasta&number=1&apiKey=73d95ab19d8b46ccbc8ef8dda36c44f5`;
-
-  const handleSubmit = () => {
-    refetch(testAPI);
-  };
+  const { data, loading, error, fetchRecipes } = useFetch();
 
   return (
     <StyledContainer>
@@ -23,16 +13,8 @@ const Home = () => {
       </StyledHeader>
 
       <StyledMain>
-        <SearchBar
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-          handleSubmit={handleSubmit}
-        />
-        {loading ? (
-          <div>LOADING...</div>
-        ) : (
-          <RecipesList items={data ? data : ""} />
-        )}
+        <SearchBar fetchRecipes={fetchRecipes} />
+        <RecipesList recipes={data?.results} />
       </StyledMain>
 
       <StyledFooter>
@@ -59,6 +41,7 @@ const StyledHeader = styled.header`
   top: 0;
   left: 0;
   height: 50px;
+  z-index: 1;
   margin-bottom: 16px;
   border-bottom: 1px solid ${(props) => props.theme.color.contrast};
   background-color: white;
